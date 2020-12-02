@@ -11,29 +11,32 @@ class RandomWalk:
         self.x_val = [0]
         self.y_val = [0]
 
-        def fill_walk(self):
-            """Calculate all the points in the walk"""
+    def get_step(self):
+        """Calculate the steps"""
 
-            # keep taking steps until the walk reaches the desired length
-            while len(self.x_val) < self.num_points:
+        # decide which direction to go and how far to go in that direction
+        direction = choice([1,-1])
+        distance = choice([0, 1, 2, 3, 4])
+        step = direction * distance
+        return step
 
-                # decide which direction to go and how far to go in that direction
-                x_direction = choice([1,-1])
-                x_distance = choice([0, 1, 2, 3, 4])
-                x_step = x_direction * x_distance
+    def fill_walk(self):
+        """Calculate all the points in the walk"""
 
-                y_direction = choice([1, -1])
-                y_distance = choice([0, 1, 2, 3, 4])
-                y_step = y_direction * y_distance
+        # keep taking steps until the walk reaches the desired length
+        while len(self.x_val) < self.num_points:
+            
+            x_step = self.get_step()
+            y_step = self.get_step()
 
-                # reject moves that go nowhere
-                if x_step == 0 and y_step == 0:
-                    continue
+            # reject moves that go nowhere
+            if x_step == 0 and y_step == 0:
+                continue
 
-                # calculate the new position
-                x = self.x_val[-1] + x_step
-                y = self.y_val[-1] + y_step
+            # calculate the new position
+            x = self.x_val[-1] + x_step
+            y = self.y_val[-1] + y_step
 
-                self.x_val.append(x)
-                self.y_val.append(y)
-                
+            self.x_val.append(x)
+            self.y_val.append(y)
+            
