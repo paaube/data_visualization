@@ -7,14 +7,16 @@ filename = "data/death_valley_2018_simple.csv"
 with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
+    tmin_index = header_row.index('TMIN')
+    tmax_index = header_row.index('TMAX')
 
     # get dates and high temperatures from this file
     dates, highs, lows = [], [], []
     for row in reader:
         current_date = datetime.strptime(row[2], '%Y-%m-%d')
         try:
-            high = int(row[4])
-            low = int(row[5])
+            high = int(row[tmax_index])
+            low = int(row[tmin_index])
         except ValueError:
             print(f"Missing data for {current_date}")
         else:
