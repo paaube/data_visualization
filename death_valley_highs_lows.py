@@ -32,6 +32,7 @@ ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 # format plot
 title = "Daily high and low temperatures - 2018\nDeath Valley, CA"
 ax.set_title(title, fontsize=20)
+ax.set(ylim=(0,140))
 ax.set_xlabel("", fontsize = 16)
 fig.autofmt_xdate()
 ax.set_ylabel("Temperature (F)", fontsize = 16)

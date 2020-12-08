@@ -27,6 +27,7 @@ ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 # format plot
 ax.set_title("Daily high and low temperatures - 2018", fontsize=24)
+ax.set(ylim=(0,140))
 ax.set_xlabel("", fontsize = 16)
 fig.autofmt_xdate()
 ax.set_ylabel("Temperature (F)", fontsize = 16)
